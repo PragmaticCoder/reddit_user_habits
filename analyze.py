@@ -6,7 +6,7 @@ submissions = []
 r = praw.Reddit(user_agent='subreddit_analysis')
 subreddit = r.get_subreddit(sys.argv[1])
 #get submission object ids
-for i,submission in enumerate(subreddit.get_hot(limit=3)):
+for i,submission in enumerate(subreddit.get_hot(limit=10)):
 	print 'getting submission object %s' % (i)
 	submissions.append(r.get_submission(
 		submission_id=submission.id))
