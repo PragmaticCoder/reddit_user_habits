@@ -1,17 +1,15 @@
 # subreddit_analysis
-analyse the habits of the users of a subreddit on Reddit
+Analyse the other subreddits of the users of a particular subreddit frequent with subreddit_analysis
 
-The main file is called coontown_breakdown because it was originally used to analyze the habits of coontown users. 
+To analyze a subreddit, do:
 
-Right now these are just scripts, I plan to make them a bit easier to reuse soon.
-
-For now you will have to go into coontown_breakdown.py and edit accordingly to whatever parameters you desire (subreddit, limit, etc)
-
-    python coontown_breakdown.py #will create a json file, you'll want to rename this in coontown_breakdown.py
+    python analyze.py your_subreddit
     
-After that
+This will create a json file called data.json. You'll then want to do:
 
-    python clean_cb_data.py #will create a couple csv's to be used for data visualization
+    python clean_cb_data.py data.json
+
+And then you'll have your csv files (comments.csv,submissions.csv,users.csv). Happy crunching!
     
 The MIT License (MIT)
 
