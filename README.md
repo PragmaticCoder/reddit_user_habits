@@ -1,5 +1,5 @@
 # subreddit_analysis
-Analyse the other subreddits of the users of a particular subreddit frequent with subreddit_analysis
+Analyze the other subreddits frequented by the users of a particular subreddit with subreddit_analysis
 
 To analyze a subreddit, do:
 
