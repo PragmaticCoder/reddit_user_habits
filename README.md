@@ -12,7 +12,9 @@ This will create a json file called data.json. You'll then want to do:
 And then you'll have your csv files (comments.csv,submissions.csv,users.csv). Happy crunching!
 
 To analyze by post frequency instead of karma score, go to lines 44 and 48 in analyze.py and change both s.score and c.score to 1. 
-    
+
+[Example analysis](http://www.africanawiki.org/_blackbox/coontown/)
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Mike Johnson Jr
