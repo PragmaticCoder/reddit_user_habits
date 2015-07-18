@@ -1,5 +1,5 @@
 # subreddit_analysis
-Analyze the subreddits frequented by the users of a particular subreddit with subreddit_analysis
+Discover the posting and commenting habits of the users of a particular subreddit with subreddit_analysis
 
 To analyze a subreddit, do:
 
