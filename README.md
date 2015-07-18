@@ -15,6 +15,10 @@ And then you'll have your csv files (comments.csv,submissions.csv,users.csv). Ha
 
 To analyze by post frequency instead of karma score, go to lines 44 and 48 in analyze.py and change both s.score and c.score to 1. 
 
+Further reading: https://praw.readthedocs.org/
+
+________
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Mike Johnson Jr
