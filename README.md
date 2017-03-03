@@ -1,7 +1,7 @@
 # subreddit_analysis
 Discover the posting and commenting habits of the users of a particular subreddit with subreddit_analysis
 
-[Example analysis](http://www.codeblackgroup.com/news/race-and-class/1/archive-coontown-breakdown-part-1/) 
+[Example analysis](http://www.codeblackgroup.com/news/race-and-class/3/archive-coontown-breakdown-part-1/) 
 
 To analyze a subreddit, do:
 
