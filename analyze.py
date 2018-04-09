@@ -3,51 +3,58 @@ import praw
 import json
 users = []
 submissions = []
-r = praw.Reddit(user_agent='subreddit_analysis')
-subreddit = r.get_subreddit(sys.argv[1])
+
+f = open("password_and_cs.txt")
+password = f.readlines()[0]
+client_secret = f.readlines()[1]
+r = praw.Reddit(
+	user_agent='analysis',
+    client_id='uWunFaORo5NzEA', 
+    client_secret=client_secret,
+    username='mjjjokes',
+    password=password
+)
+
+subreddit = r.subreddit(sys.argv[1])
 #get submission object ids
-for i,submission in enumerate(subreddit.get_hot(limit=10)):
+for i,submission in enumerate(subreddit.hot(limit=50)):
 	print 'getting submission object %s' % (i)
-	submissions.append(r.get_submission(
-		submission_id=submission.id))
-root_comments = []
+	submissions.append(r.submission(
+		id=submission.id))
+
+comments = []
 for i,s in enumerate(submissions):
-	print 'getting comments %s of %s' % (
+	print 'getting users for commenters in submission %s of %s' % (
 		i, len(submissions))
-	for c in s.comments:
-		root_comments.append(c)
-def get_comments(comments,level):
-	for i,c in enumerate(comments):
+	for c in s.comments.list():
 		try:
-			print 'getting comment count: %s in level %s' % (
-				i,level)
 			if c.author.name not in users:
+				#get user of each comment in thread
 				users.append(c.author.name)
-		except AttributeError:				
-			print 'nada'
-		if hasattr(c,'replies'):
-			level += 1
-			get_comments(c.replies,level)
+		except:
+			print 'Nonetype object has no attribute name'
 		
-get_comments(root_comments,0)
 kb_submissions = {}
 kb_comments = {}
 for idx,username in enumerate(users):
-	try: 
+	try:
 		print 'getting info for %s, %s of %s' % (username,idx,len(users))
-		user = r.get_redditor(username)
-		submissions = user.get_submitted(limit=None)
-		comments = user.get_comments(limit=None)
+		user = r.redditor(username)
+		submissions = user.submissions.new(limit=None)
+		comments = user.comments.new(limit=None)
 		for s in submissions:
 			subreddit = s.subreddit.display_name
 			kb_submissions[subreddit] = (
-				kb_submissions.get(subreddit, 0) + s.score)
+				kb_submissions.get(subreddit, 0) + 1
+			)
 		for c in comments:
 			subreddit = c.subreddit.display_name
 			kb_comments[subreddit] = (
-				kb_comments.get(subreddit, 0) + c.score)
+				kb_comments.get(subreddit, 0) + 1
+			)
 	except:
-		print 'user deleted his/her account, smart'
+		print 'user deleted'
+
 karma_by_subreddit = {
 	'submissions':kb_submissions,
 	'comments':kb_comments,
