@@ -1,7 +1,7 @@
 # subreddit_analysis
 Discover the posting and commenting habits of the users of a particular subreddit with subreddit_analysis
 
-To analyze a subreddit, do:
+To analyze a subreddit, edit the first few lines of the `analyze.py` using your own credentials, then do:
 
     python analyze.py your_subreddit
     
