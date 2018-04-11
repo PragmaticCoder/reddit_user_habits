@@ -24,6 +24,8 @@ for i,submission in enumerate(subreddit.hot(limit=50)):
 
 comments = []
 for i,s in enumerate(submissions):
+	if s.author.name not in users:
+		users.append(s.author.name)
 	print 'getting users for commenters in submission %s of %s' % (
 		i, len(submissions))
 	for c in s.comments.list():
